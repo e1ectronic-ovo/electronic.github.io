@@ -1,204 +1,32 @@
-前端开发规范
-
-## 为什么需要 “前端开发规范”
-
-规范不是强制性的，对代码的编写和程序的运行不会有致命的问题，但是没有规范会有一系列的问题，比如：
-
-缺乏规范，第一个问题就是团队编码风格不一，增加了成员之间代码的阅读成本，加大了团队协作成本和维护成本；
-随着团队人员的变化（多人开发一个应用，或者应用更换开发人员），如果缺乏规范，项目可能会变得一团糟，甚至失控；
-即便是个人开发，规范也是需要的，当把项目转给其他人的时候，如果有规范的话，会大大降低阅读成本。
-所以，建立一套适合团队的开发规范是很受用的。
-
-## A.基本原则
-
-符合web标准（UTF-8，HTML5），语义化html（HTML5新增要求，减少div和span等无特定语义的标签使用），结构表现行为分离（HTML-CSS-JS代码分离，不同行为代码高内聚低耦合），兼容性优良（早期版本浏览器兼容，移动端和PC端设备兼容）.页面性能方面（减少请求次数，例如使用精灵图和sass语法），代码要求简洁明了有序，尽可能的减小服务器负载，保证最快的解析速度（减小repaint和reflow）.
-
-## B.文件命名规范
-
-1、html，css，js，lib，images文件均存放至项目的目录中。如果使用相关前端框架，根据框架的文件格式进行合理布局。
-
-2、所有文件夹及文件使用英文命名（避免使用中文路径）。
-
-3、html文件：入口文件使用index.html。如果有对应的设计组设计原稿，需要将对应的设计稿和html文件命名一致并合理存放。
-
-4、css文件命名：后缀.css。通用initial.css，初始化base.css，首页index.css，其他页面按照对应的html命名。
-
-5、Js文件命名：英文命名，后缀.js.通用common.js，初始化base.js。 其他页面按照对应的html命名。
-
-## C.HTML规范
-
-1、文档类型声明及编码：统一为html5声明类型。书写时利用IDE实现层次分明的缩进（默认缩进4空格）。
-
-2、非特殊情况下CSS文件放在body部分标签后。非特殊情况下大部分JS文件放在标签尾部（如果需要界面未加载前执行的代码可以放在head标签后）避免行内JS和CSS代码。
-
-3、所有编码需要遵循html（XML）标准，标签&属性&属性命名必须由小写字母及下划线数字组成，且所有标签必须闭合，包括br()，hr()等。属性值用双引号。
-
-4、引入JS库文件，文件名须包含库名称及版本号及是否为压缩版，比如jquery-1.4.1.min.js。引入插件，文件名格式为库名称+插件名称，比如jQuery.bootstrap.js。
-
-5、书写页面过程中，请考虑向后扩展性。class&id参见css书写规范.
-
-6、需要为html元素添加自定义属性的时候，首先要考虑下有没有默认的已有的合适标签去设置，如果没有，可以使用须以”data-“为前缀来添加自定义属性，避免使用”data：”等其他命名方式。
-
-7、语义化html，如标题根据重要性用h*(同一页面只能有一个h1)，段落标记用p，列表用ul，内联元素中不可嵌套块级元素。
-
-8、尽可能减少div多层级嵌套。
-
-9、书写链接地址时，必须避免重定向，例如：href=”http：//myVue.com/“，即须在URL地址后面加上“/”；
-
-10、在页面中尽量避免使用style属性，即style=”…”。
-
-11、必须为含有描述性表单元素(input，textarea)添加label，如姓名：须写成：姓名：
-
-12、能以背景形式呈现的图片，尽量写入css样式中。
-
-13、重要图片必须加上alt属性。给重要的元素和截断的元素加上title。
-
-14、给区块代码及重要功能(比如循环)加上注释，方便后台添加功能。
-
-15、特殊符号使用：尽可能使用代码替代：比如<(<)&>(>)&空格()&»(»)等等。
-
-## D.CSS规范
-
-1、编码规范为utf-8。
-
-2、协作开发及分工：i会根据各个模块，同时根据页面相似程序，事先写**体框架文件，分配给前端人员实现内部结构&表现&行为。共用css文件base.css由i书写，协作开发过程中，每个页面请务必都要引入，此文件包含reset及头部底部样式，此文件不可随意修改。
-
-3、class与id的使用：id是唯一的并是父级的，class是可以重复的并是子级的，所以id仅使用在大的模块上，class可用在重复使用率高及子级中。id原则上都是由我分发框架文件时命名的，为JS预留钩子的除外。
-
-4、为JS预留钩子的命名，请以js_起始，比如：js_hide，js_show。
-
-5、class与id命名：大的框架命名比如header/footer/wrapper/left/right之类的在2中由i统一命名.其他样式名称由小写英文&数字&来组合命名，如i_comment，fontred，width200。避免使用中文拼音，尽量使用简易的单词组合。总之，命名要语义化，简明化
-
-6、规避class与id命名(此条重要，若有不明白请及时与i沟通)：a）通过从属写法规避，示例见d。b）取父级元素id/class命名部分命名，示例见d。c）重复使用率高的命名，请以自己代号加下划线起始，比如i_clear。d）a，b两条，适用于在2中已建好框架的页面，如，要在2中已建好框架的页面代码中加入新的div元素，按a命名法则：…，样式写法：#mainnav.firstnav{…….}按b命名法则：…，样式写法：.main_firstnav{…….}
-
-7、css属性书写顺序，建议遵循：布局定位属性–>自身属性–>文本属性–>其他属性.此条可根据自身习惯书写，但尽量保证同类属性写在一起.属性列举：布局定位属性主要包括：display&list-style&position（相应的top，right，bottom，left）＆float&clear＆visibility＆overflow；
-
-自身属性主要包括：width&height&margin&padding&border&background。
-
-文本属性主要包括：color&font&text-decoration&text-align&vertical-align&white-space&
-
-其他&content。
-
-8、书写代码前，提高样式重复使用率。
-
-9、充分利用html自身属性及样式继承原理减少代码量。
-10、样式表中中文字体名，请务必转码成unicode码，以避免编码错误时乱码。
-
-11、背景图片请尽可能使用精灵图技术，减小http请求，考虑到多人协作开发，精灵图按模块制作。
-
-12、使用table标签时(尽量避免使用table标签)，请不要用width/height/cellspacing/cellpadding等table属性直接定义表现，应尽可能的利用table自身私有属性分离结构与表现，如thead，tr，th，td，tbody，tfoot，colgroup，scope。(cellspaing及cellpadding的css控制方法：table{border：0。margin：0。border-collapse：collapse。}tableth，tabletd{padding：0。}，base.css文件中我会初始化表格样式)
-
-13、杜绝使用兼容ie8。
-
-14、用png图片做图片时，要求图片格式为png-8格式，若png-8实在影响图片质量或其中有半透明效果，请为ie6单独定义背景：_background：none。_filter：progid：DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop，src=’img/bg.png’)。
-
-15、避免兼容性属性的使用，比如text-shadow||css3的相关属性。
-
-16、减少使用影响性能的属性，比如position：absolute||float。
-
-17、必须为大区块样式添加注释，小区块适量注释。
-
-18、代码缩进与格式：建议单行书写，可根据自身习惯，后期优化会统一处理。
-
-## E. JS书写规范
-
-1、文件编码统一为utf-8，书写过程过，每行代码结束必须有分号。原则上所有功能均根据XXX项目需求原生开发，以避免网上down下来的代码造成的代码污染(沉冗代码||与现有代码冲突||)。
-
-2、库引入：原则上仅引入jQuery库，若需引入第三方库，须与团队其他人员讨论决定。
-
-3、变量命名：驼峰式命名.原生JS变量要求是纯英文字母，首字母须小写;要求变量集中声明，避免全局变量;私有属性、变量和方法以下划线 _ 开头;常量, 使用全部字母大写，单词间下划线分隔的命名方式;枚举的属性， 使用全部字母大写，单词间下划线分隔的命名方式
-
-4、类命名：首字母大写，驼峰式命名.如MyVue。
-
-5、函数命名：首字母小写驼峰式命名.如myVue()。
-
-6、命名语义化，尽可能利用英文单词或其缩写。
-
-7、尽量避免使用存在兼容性及消耗资源的方法或属性，比如eval_r()&innerText。
-
-8、后期优化中，JS非注释类中文字符须转换成unicode编码使用，以避免编码错误时乱码显示。
-
-9、代码结构明了，加适量注释.提高函数重用率。
-
-10、注重与html分离，减小reflow，注重浏览器性能。
-
-11、注释 （尽量提高代码本身的清晰性、可读性，合理的注释、空行排版等，可以让代码更易阅读、更具美感）
-
-12、利用缓存存放数据、资源压缩、避免高频刷新页面、静态资源上传cdn
-
-13、设置响应头cache-control和last-modified（如果两次请求间隔小于5秒，直接返回304，不需要服务器进行处理）
-
-14、Web服务器的负载均衡、请求分发（七层负载均衡的实现）、上传文件使用异步模式
-
-15、将活动页面上的所有可以静态的元素全部静态化，并尽量减少动态元素。通过CDN来抗峰值
-
-16、用户提交之后按钮置灰，禁止重复提交
-
-17、在某一时间段内只允许用户提交一次请求，比如可以采取IP限流
-
-18、图片在一个页面上属于数据量比较大的东西，尽量避免动态数据和图片的顺序渲染，使用图片服务器分离数据和图片（建立独立图片服务器）
-
-19、使用nginx等负载均衡中间件，将请求分布到不同的机器上，避免单个应用持续的处理引起血崩
-
-### 单行注释
-
-必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。
-
-### 多行注释
-
-避免使用 /*…*/ 这样的多行注释。有多行注释内容时，使用多个单行注释。
-
-函数/方法注释
-
-函数/方法注释必须包含函数说明，有参数和返回值时必须使用注释标识。；
-参数和返回值注释必须包含类型信息和说明；
-当函数是内部函数，外部不可访问时，可以使用 @inner 标识；
-
-```
-/**
- * 函数描述
- *
- * @param {string} p1 参数1的说明
- * @param {string} p2 参数2的说明，比较长
- *     那就换行了.
- * @param {number=} p3 参数3的说明（可选）
- * @return {Object} 返回值描述
- */
-function foo(p1, p2, p3) {
-    var p3 = p3 || 10;
-    return {
-        p1: p1,
-        p2: p2,
-        p3: p3
-    };
-}
+Freelancer Jekyll theme  
+=========================
+
+Jekyll theme based on [Freelancer bootstrap theme ](http://startbootstrap.com/template-overviews/freelancer/)
+
+## How to use
+ - Place a image in `/img/portfolio/`
+ - Replace `your-email@domain.com` in `_config.yml` with your email address. Refer to [formspree](http://formspree.io/) for more information.
+ - Create posts to display your projects. Use the follow as an example:
+```txt
+---
+layout: default
+modal-id: 1
+date: 2020-01-18
+img: cabin.png
+alt: image-alt
+project-date: January 2020
+client: The Client
+category: Web Development
+description: The description of the project
+
+---
 ```
 
+## Demo
+View this jekyll theme in action [here](https://jeromelachaud.com/freelancer-theme)
 
+## Screenshot
+![screenshot](https://raw.githubusercontent.com/jeromelachaud/freelancer-theme/master/screenshot.png)
 
-### 文件注释
-
-文件注释用于告诉不熟悉这段代码的读者这个文件中包含哪些东西。 应该提供文件的大体内容, 它的作者, 依赖关系和兼容性信息。如下:
-
-```
-/**
- * @fileoverview Description of file, its uses and information
- * about its dependencies.
- * @author user@meizu.com (Firstname Lastname)
- * Copyright 2009 Meizu Inc. All Rights Reserved.
- */
-```
-
-
-
-## F.图片规范
-
-1、所有页面元素类图片均放入img文件夹，测试用图片放于demo文件夹。
-
-2、图片格式gif/png/jpg。提倡使用webp文件格式，使用软件进行图片压缩。
-
-3、命名全部用小写英文字母||数字||_的组合，其中不得包含汉字||空格||特殊字符；尽量用易懂的词汇，便于团队其他成员理解。另，命名分头尾两部分，用下划线隔开，比如ad_left01.gif||btn_submit.gif。
-
-4、在保证视觉效果的情况下选择最小的图片格式与图片质量，以减少加载时间。5、尽量避免使用半透明的png图片(若使用，请参考css规范相关说明)。
-
-6、运用css精灵图技术集中小的背景图或图标，减小页面http请求，但注意，请务必在对应的精灵图psd源图中划参考线，并保存至img目录下
+---------
+For more details, read the [documentation](http://jekyllrb.com/)
