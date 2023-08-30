@@ -1,32 +1,7 @@
-Freelancer Jekyll theme  
-=========================
+# Vue 3 + Vite
 
-Jekyll theme based on [Freelancer bootstrap theme ](http://startbootstrap.com/template-overviews/freelancer/)
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## How to use
- - Place a image in `/img/portfolio/`
- - Replace `your-email@domain.com` in `_config.yml` with your email address. Refer to [formspree](http://formspree.io/) for more information.
- - Create posts to display your projects. Use the follow as an example:
-```txt
----
-layout: default
-modal-id: 1
-date: 2020-01-18
-img: cabin.png
-alt: image-alt
-project-date: January 2020
-client: The Client
-category: Web Development
-description: The description of the project
+## Recommended IDE Setup
 
----
-```
-
-## Demo
-View this jekyll theme in action [here](https://jeromelachaud.com/freelancer-theme)
-
-## Screenshot
-![screenshot](https://raw.githubusercontent.com/jeromelachaud/freelancer-theme/master/screenshot.png)
-
----------
-For more details, read the [documentation](http://jekyllrb.com/)
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
